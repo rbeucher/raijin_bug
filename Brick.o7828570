@@ -1,0 +1,13 @@
+
+======================================================================================
+                  Resource Usage on 2018-06-23 17:19:41:
+   Job Id:             7828570.r-man2
+   Project:            q97
+   Exit Status:        0
+   Service Units:      7.17
+   NCPUs Requested:    32                     NCPUs Used: 32              
+                                           CPU Time Used: 02:17:17                                   
+   Memory Requested:   50.0GB                Memory Used: 4.47GB          
+   Walltime requested: 05:00:00            Walltime Used: 00:04:29        
+   JobFS requested:    10.0GB                 JobFS used: 1.0KB           
+======================================================================================

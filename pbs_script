@@ -1,0 +1,23 @@
+#PBS -P q97
+#PBS -q express
+#PBS -l walltime=05:00:00
+#PBS -l mem=50GB
+#PBS -l jobfs=10GB
+#PBS -l ncpus=32
+#PBS -l software=underworld
+#PBS -l wd
+#PBS -N Brick
+
+module purge
+module load pbs dot python/2.7.11 python/2.7.11-matplotlib openmpi/1.10.2 mpi4py/2.0.0 gcc/5.2.0
+
+export PYTHONPATH=/apps/underworld/opt/h5py/2.7.1-python_2.7/lib/python2.7/site-packages/:/projects/Underworld/underworld_development_06_21_2018:/projects/Underworld/underworld_development_06_21_2018/glucifer:/apps/underworld/opt/h5py/2.7.1-python_2.7/lib/python2.7/site-packages/:/apps/mpi4py/2.0.0/lib/python2.7/site-packages/ 
+
+export PYTHONPATH=$PYTHONPATH:$HOME/opt/UWGeodynamics
+
+MODELNAME="BrickBenchmarkDebug"
+OUTPUTPATH=`pwd`
+SCRIPT="BrickBenchmarkDebug.py"
+
+mpiexec --mca mpi_warn_on_fork 0 --mca opal_abort_print_stack 1 --mca mpi_param_check 1 --mca mpi_add_procs_cutoff 256 python ./$SCRIPT 1> $OUTPUTPATH/$MODELNAME.$PBS_JOBID.log 2> $OUTPUTPATH/$MODELNAME.$PBS_JOBID.err
+
